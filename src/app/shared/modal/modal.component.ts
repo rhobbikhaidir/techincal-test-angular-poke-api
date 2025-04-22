@@ -84,7 +84,7 @@ export class DialogOverviewExampleDialog {
   }
 
   ngOnInit(): void {
-    this.getSpecies()
+    this.getDetail()
   }
 
 
@@ -103,7 +103,7 @@ export class DialogOverviewExampleDialog {
   }
 
 
-  getSpecies() {
+  getDetail() {
     this.pokeService.getDetailPokemon(this.data.id).subscribe((res) => {
       this.isLoading = false;
       const tempDetail: DetailListProps[] = [{
@@ -115,8 +115,6 @@ export class DialogOverviewExampleDialog {
         moves: this.formatMoves(res?.moves)
       }]
       console.log(tempDetail, 'tempDetail')
-
-
       this.detailList = tempDetail;
       console.log(res, 'ini response')
     })
