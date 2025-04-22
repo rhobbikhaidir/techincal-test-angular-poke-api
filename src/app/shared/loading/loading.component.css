@@ -33,10 +33,3 @@ p {
         transform: rotate(360deg);
     }
 }
-
-@media(max-width: 655px) {
-    .pokeball {
-        width: 75px;
-        height: 75px;
-    }
-}

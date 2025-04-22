@@ -1,0 +1,57 @@
+<style>
+    .bg-primary {
+        background: linear-gradient(to bottom, rgb(43, 42, 42), rgb(27, 27, 27));
+    }
+
+    .wrapper-img {
+        background: linear-gradient(to bottom, rgba(214, 214, 214, 0.325), rgba(77, 77, 77, 0.1));
+        box-shadow: 0 0 10px 10px rgba(202, 201, 201, 0.05);
+        border-radius: 50%;
+        width: 300px;
+    }
+</style>
+
+<div>
+    <div>
+        <mat-dialog-content class="bg-primary">
+            <div *ngIf="isLoading" class="flex flex-col items-center">
+                <p class="text-white text-2xl">Loading...</p>
+            </div>
+            <div *ngIf="!isLoading" >
+                <div *ngFor="let detail of detailList" >
+                    <p class="text-white text-2xl">HI. {{detail.name}}</p>
+                    <div class="flex flex-row gap-4">
+                        <img class="w-auto h-auto wrapper-img"
+                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{data?.id}}.png"
+                            alt="img-poke">
+                        <div class="flex flex-col gap-2 justify-center">
+                            <div class="flex flex-row items-center">
+                                <p class="text-white opacity-[0.5] text-xs">Height :</p>
+                                <p class="text-white text-xs">{{detail.height}}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <p class="text-white opacity-[0.5] text-xs">Weight :</p>
+                                <p class="text-white text-xs">{{detail.weight}}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <p class="text-white opacity-[0.5] text-xs">Type :</p>
+                                <p class="text-white text-xs">{{detail.type}}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <p class="text-white opacity-[0.5] text-xs">Abilities :</p>
+                                <p class="text-white text-xs">{{detail.abilities}}</p>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+
+            </div>
+         
+
+
+            <!-- <input matInput [(ngModel)]="animal" /> -->
+        </mat-dialog-content>
+    </div>
+</div>

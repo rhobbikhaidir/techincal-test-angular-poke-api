@@ -8,6 +8,11 @@ export class PokemonService {
 
   getAllPokemonWithAbilities(limit = 10, offset = 0) {
     return this.http
-      .get<any>(`https://pokeapi.co/api/v2/pokemon?limit=${limit}}&offset=${offset}`)
+      .get<any>(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
   }
+
+  getDetailPokemon(id: number) {
+    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  }
+  
 }
