@@ -38,4 +38,5 @@ export type DetailListProps = {
     height: number;
     weight: number;
     type: string;
+    moves: any[]
 }
