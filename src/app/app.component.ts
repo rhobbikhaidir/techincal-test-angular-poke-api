@@ -28,23 +28,9 @@ export class AppComponent {
   maxData = 151;
   totalPage = Math.ceil(this.maxData / this.limit)
   isLoading = true;
-  showModal = false;
   animal = 'lion';
   name = 'jhon'
   dialog = inject(MatDialog);
-
-
-
-
-  testingMap = [1, 2, 3, 4, 5];
-
-  poke = [
-    { name: 'bulbasaur', number: 1 },
-    { name: 'charmander', number: 4 },
-    { name: 'squirtle', number: 7 }
-  ];
-
-
 
   constructor(private pokeService: PokemonService, private http: HttpClient) {
 
@@ -86,7 +72,7 @@ export class AppComponent {
   }
 
   numPoke(number: number) {
-    const dinamicNum = (this.currPage - 1) * this.limit + number + 1;
+    const dinamicNum = (this.currPage - 1) * this.limit + number;
     const hastag = '#';
     const formatNum = `${hastag} ${dinamicNum?.toString().padStart(3, '0')}`
     return formatNum
@@ -95,7 +81,6 @@ export class AppComponent {
 
   getColorPoke(types: TypePokemonsProps[]) {
     let type = types[0]?.type.name
-    console.log(type, '****type')
     let color = "#A9A9A9"
     const listColor = [
       {
@@ -136,7 +121,7 @@ export class AppComponent {
       },
     ]
 
-    const hasColor = listColor.find((item) => item.type === types[0]?.type.name)?.color
+    const hasColor = listColor.find((item) => item.type === type)?.color
     if (hasColor) color = hasColor
 
     return {
@@ -197,16 +182,6 @@ export class AppComponent {
     console.log(pages, "totalPages")
     return pages;
   }
-
-
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
-  }
-
 
   openDialog(id: number): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
